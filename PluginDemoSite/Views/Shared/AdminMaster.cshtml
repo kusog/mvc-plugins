@@ -1,0 +1,30 @@
+﻿@using PluginDemo
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title :: Plugin Demo App</title>
+    <link rel="Stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/redmond/jquery-ui.css" />
+    @Styles.Render("~/Content/css")
+    @Html.Action("HeaderIncludes", "PluginDemo")
+</head>
+<body>
+    @{
+        string viewName = ViewBag.viewName == null ? "" : ViewBag.viewName.ToString();
+        Syrinx2.MvcMenu menu = new Syrinx2.MvcMenu("defaultMainMenu", (val) => Url.Content(val));
+        menu.PrimaryCssClass = "syrinx-menu ui-dialog-titlebar ui-widget-header ui-corner-all";
+        menu.CssClass = "masthead-menu";
+        menu.SubMenuCssClass = "dropdown-menu";
+        menu.ItemCssClass = "masthead-menuitem";
+        menu.SubMenuItemCssClass = "dropdown-menuitem";
+        PluginDemoApplication.Instance.AddMenuItems(menu, "main", viewName);
+    }
+    @Html.Raw(menu.Html)
+    <div>
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery","~/bundles/jqueryui","~/bundles/demoappscripts")
+    @Html.Action("FooterIncludes", "PluginDemo")
+</body>
+</html>

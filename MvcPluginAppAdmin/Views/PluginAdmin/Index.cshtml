@@ -1,0 +1,19 @@
+﻿@using System.Web.Mvc
+@using System.Web.Mvc.Ajax
+@using System.Web.Mvc.Html
+@inherits System.Web.Mvc.WebViewPage<List<MvcPluginAppAdminPlugin.Models.AppPlugin>>
+@{
+    ViewBag.Title = "Plugin Demo App - Plugin Admin";
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+<h3>Registered Plugins</h3>
+<ul class="pladmin-pluginlist">
+@foreach (MvcPluginAppAdminPlugin.Models.AppPlugin plugin in @Model)
+{
+    <li id="@plugin.Id"><h3>@plugin.Name</h3>
+        <p>@plugin.Description</p>
+        <strong>assembly info</strong><br />
+        @plugin.AssemblyInfo.Name - @plugin.AssemblyInfo.Version - @plugin.AssemblyInfo.Date
+    </li>
+}
+</ul>

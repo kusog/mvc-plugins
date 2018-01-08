@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+
+<h2>Index</h2>
+@*
+The following two calls to @Html.Action demonstrate the two different ways a widget can be rendered.
+The first example, which is commented out, calls the widget controller action directly, bypassing the main plugin application process.
+
+The second example, calls the PluginDemo Widget action, which gives the main plugin application a chance to look up a widget id
+and get the controller action to use.
+
+Right now there really is no significant different between these two methods, though a widget container is always
+going to use the Widget action to render its list of widgets.  
+
+The recommend approach is to use the Widget Action and go through the Widget ID rather than use the controller action directly.
+*@
+
+@*@Html.Action("GetSlideShowHtml", "SlideShow", new  {id="NorthAmericanBears"})*@
+
+@Html.Action("Widget", "PluginDemo", new {widgetId="SyrinxSlideshow", slideShowId="NorthAmericanBears"})
+

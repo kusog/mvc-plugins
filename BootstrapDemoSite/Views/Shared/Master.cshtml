@@ -1,0 +1,48 @@
+﻿@using PluginDemo
+@{
+    bool useFixedHeader = false;
+
+    string viewName = ViewBag.viewName == null ? "" : ViewBag.viewName.ToString();
+    Syrinx2.MvcMenu menu = new Syrinx2.MvcMenu("defaultMainMenu", (val) => Url.Content(val));
+    menu.PrimaryCssClass = "navbar-collapse collapse";
+    menu.CssClass = "nav navbar-nav";
+    menu.SubMenuCssClass = "dropdown-menu";
+    menu.ItemCssClass = "masthead-menuitem";
+    menu.SubMenuItemCssClass = "dropdown-menuitem";
+    menu.GenerateUL = true;
+    PluginDemoApplication.Instance.AddMenuItems(menu, "main", viewName);
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @Html.Action("Metatags","PluginDemo")
+    <title>@ViewBag.Title :: Plugin Demo App</title>
+    @Styles.Render("~/content/styles")
+    @Html.Action("HeaderIncludes", "PluginDemo")
+</head>
+<body>
+    <nav role="navigation" class='navbar navbar-inverse @(!useFixedHeader ? "" : "navbar-fixed-top")'>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="\">Plugin Demo</a>
+            </div>
+            @Html.Raw(menu.Html)
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="row">
+      <div class="col-md-8">@RenderBody()</div>
+      <div class="col-md-4">@Html.Action("WidgetContainer", "PluginDemo", new {containerName="rightSidebar"})</div>
+    </div>
+    @Scripts.Render("~/bundles/jquery", "~/bundles/bootstrap")
+    @Html.Action("FooterIncludes", "PluginDemo")
+</body>
+</html>

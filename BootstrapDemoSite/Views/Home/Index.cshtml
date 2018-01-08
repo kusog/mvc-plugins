@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.Action("Widget", "PluginDemo", new {widgetId="SyrinxSlideshow", slideShowId="NorthAmericanBears"})
+<hr />
+@Html.Action("Widget", "PluginDemo", new { widgetId = "SharepointArticles" })
+<hr />
+@Html.Action("Widget", "PluginDemo", new {widgetId = "SharepointArticle", artId=1})

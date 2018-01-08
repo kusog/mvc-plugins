@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu id="defaultMainMenu" >
+  <MenuItem text="Home" navigateUrl="~/"/>
+  <MenuItem text="Tools" id="tools" MustHaveVisibleChildrenToBeVisible="true">
+  </MenuItem>
+  <MenuItem text="View" id="view" MustHaveVisibleChildrenToBeVisible="true">
+  </MenuItem>
+  <MenuItem text="Admin">
+    <MenuItem text="Plugins" navigateUrl="~/PluginAdmin" />
+  </MenuItem>
+  <!--<MenuItem text="Logout" description="Logout of the application and go back to login screen" navigateUrl="~/Account/Logout" />-->
+</Menu>

@@ -1,0 +1,11 @@
+﻿#simpleMessage {
+    font-size: 20px;
+}
+
+.my-special-container {
+    float:right;
+    background-color: #D9ECFF;
+}
+    .my-special-container .pmvc-widget-container {
+        float:none;
+    }

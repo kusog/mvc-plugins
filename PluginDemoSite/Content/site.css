@@ -1,0 +1,32 @@
+﻿.masthead-menuitem a {
+    padding:8px 10px;
+    text-decoration:none;
+}
+.masthead-menuitem a:hover {
+    text-decoration:underline;
+}
+
+.dropdown-menu {
+    background-color: #70A8D2;
+    min-width:125px;
+}
+
+.dropdown-menuitem a {
+    text-decoration:none;
+    padding-left:10px;
+    padding-top:3px;
+    padding-bottom:3px;
+    padding-right:3px;
+}
+
+    .dropdown-menuitem a:hover {
+        text-decoration: underline;
+    }
+
+
+.pmvc-widget-container {
+    border: solid 2px black;
+    float:right;
+    padding:7px;
+}
+

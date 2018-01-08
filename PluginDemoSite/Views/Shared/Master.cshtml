@@ -1,0 +1,39 @@
+﻿@using PluginDemo
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @Html.Action("Metatags","PluginDemo")
+    <title>@ViewBag.Title :: Plugin Demo App</title>
+    <link rel="Stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/redmond/jquery-ui.css" />
+    @Styles.Render("~/Content/css")
+    @Html.Action("HeaderIncludes", "PluginDemo")
+</head>
+<body>
+    @{
+        string viewName = ViewBag.viewName == null ? "" : ViewBag.viewName.ToString();
+        Syrinx2.MvcMenu menu = new Syrinx2.MvcMenu("defaultMainMenu", (val) => Url.Content(val));
+        menu.PrimaryCssClass = "syrinx-menu ui-dialog-titlebar ui-widget-header ui-corner-all";
+        menu.CssClass = "masthead-menu";
+        menu.SubMenuCssClass = "dropdown-menu";
+        menu.ItemCssClass = "masthead-menuitem";
+        menu.SubMenuItemCssClass = "dropdown-menuitem";
+        PluginDemoApplication.Instance.AddMenuItems(menu, "main", viewName);
+    }
+    @Html.Raw(menu.Html)
+    <div>
+        @RenderBody()
+        <h4>Custom Content</h4>
+        <p>This page has meta-tags that are added via dynamically added MVC controller action filters.  Any plugin can add additional meta-tags, or change meta-tags added to the page by other plugins.</p>
+        @Html.Action("WidgetContainer", "PluginDemo", new {containerName="rightSidebar"})
+        <br style="clear:both" />
+    </div>
+    <div>
+        @Html.Action("PageFooter", "PluginDemo")
+    </div>
+    @Scripts.Render("~/bundles/jquery","~/bundles/jqueryui","~/bundles/demoappscripts")
+    @Html.Action("FooterIncludes", "PluginDemo")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
